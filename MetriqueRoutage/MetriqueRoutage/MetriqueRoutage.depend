@@ -1,0 +1,68 @@
+# depslib dependency file v1.0
+1459263918 source:c:\users\bebo\documents\documents\ingpolytech\di4\réseaux avancés et télécom\reseauxavances\tp3-4-5\git\tp3-4-5-opensm\metriqueroutage\metriqueroutage\calculation.cpp
+	<iostream>
+	<fstream>
+	<vector>
+	<cstring>
+	<sstream>
+	<cstdlib>
+	"calculation.h"
+	"topology.h"
+	"routing.h"
+
+1459263930 c:\users\bebo\documents\documents\ingpolytech\di4\réseaux avancés et télécom\reseauxavances\tp3-4-5\git\tp3-4-5-opensm\metriqueroutage\metriqueroutage\calculation.h
+	<iostream>
+	<fstream>
+	<vector>
+	<cstring>
+	<sstream>
+	<set>
+	<cstdlib>
+	"topology.h"
+	"routing.h"
+
+1459263930 c:\users\bebo\documents\documents\ingpolytech\di4\réseaux avancés et télécom\reseauxavances\tp3-4-5\git\tp3-4-5-opensm\metriqueroutage\metriqueroutage\topology.h
+	<iostream>
+	<fstream>
+	<vector>
+	<cstring>
+	<sstream>
+	<set>
+	<cstdlib>
+
+1459263930 c:\users\bebo\documents\documents\ingpolytech\di4\réseaux avancés et télécom\reseauxavances\tp3-4-5\git\tp3-4-5-opensm\metriqueroutage\metriqueroutage\routing.h
+	<iostream>
+	<fstream>
+	<vector>
+	<cstring>
+	<sstream>
+	<set>
+	<cstdlib>
+
+1521113352 source:c:\users\bebo\documents\documents\ingpolytech\di4\réseaux avancés et télécom\reseauxavances\tp3-4-5\git\tp3-4-5-opensm\metriqueroutage\metriqueroutage\main.cpp
+	<iostream>
+	<fstream>
+	<vector>
+	<cstring>
+	<sstream>
+	<set>
+	"calculation.h"
+
+1459263930 source:c:\users\bebo\documents\documents\ingpolytech\di4\réseaux avancés et télécom\reseauxavances\tp3-4-5\git\tp3-4-5-opensm\metriqueroutage\metriqueroutage\routing.cpp
+	"routing.h"
+	<iostream>
+	<fstream>
+	<vector>
+	<cstring>
+	<sstream>
+	<cstdlib>
+
+1459263930 source:c:\users\bebo\documents\documents\ingpolytech\di4\réseaux avancés et télécom\reseauxavances\tp3-4-5\git\tp3-4-5-opensm\metriqueroutage\metriqueroutage\topology.cpp
+	"topology.h"
+	<iostream>
+	<fstream>
+	<vector>
+	<cstring>
+	<sstream>
+	<cstdlib>
+
