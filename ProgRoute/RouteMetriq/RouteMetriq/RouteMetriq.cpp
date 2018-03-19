@@ -57,11 +57,11 @@ int main(int argc, char *argv[])
 	*/
 
 	cout << "Number of hops calculation" << endl;
-	getchar();
+	//getchar();
 	cout << endl << "\tMinimum number of hops = " << routecalc.calculate() << endl;
 
 	cout << "Route balancing " << endl;
-	getchar();
+	//getchar();
 	cout << "\tRoute balancing = " << routecalc.balance() << endl;
 	getchar();
 
