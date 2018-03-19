@@ -24,24 +24,14 @@ void usage(char * name)
  */
 int main(int argc, char *argv[])
 {
-    //
-	// A supprimer
-    //
+    if (argc < 2) usage(argv[0]);
 
-    Calculation routecalc('Topo1.topo', 'Topo1.route');
+    char *topoFile = argv[1];
+    char *routeFile = argv[2];
 
-	//
-	//
-	//
+	Calculation routecalc(topoFile, routeFile);
 
-    // A REMETRE !!!!
-	//if (argc < 2) usage(argv[0]);
-
-	char *topoFile = argv[1];
-	char *routeFile = argv[2];
-
-	//Calculation routecalc(topoFile, routeFile);
-
+	/*
 	// Affichage de la topologie
 	cout << "Topo file data" << endl;
 	getchar();
@@ -52,8 +42,10 @@ int main(int argc, char *argv[])
 	getchar();
 	routecalc.printRouting();
 
+	*/
+
 	cout << "Number of hops calculation" << endl;
-	getchar();
+	//getchar();
 	cout<<endl<< "\tMinimum number of hops = " << routecalc.calculate() << endl;
 
 	cout << "Route balancing " << endl;
