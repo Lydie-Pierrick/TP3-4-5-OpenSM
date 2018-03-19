@@ -1,2 +1,2 @@
-﻿  RouteMetriq.vcxproj -> C:\Users\Bebo\Documents\Documents\INGPolytech\DI4\Réseaux avancés et Télécom\ReseauxAvances\TP3-4-5\git\TP3-4-5-OpenSM\ProgRoute\RouteMetriq\Debug\RouteMetriq.exe
-  RouteMetriq.vcxproj -> C:\Users\Bebo\Documents\Documents\INGPolytech\DI4\Réseaux avancés et Télécom\ReseauxAvances\TP3-4-5\git\TP3-4-5-OpenSM\ProgRoute\RouteMetriq\Debug\RouteMetriq.pdb (Full PDB)
+﻿  calculation.cpp
+c:\users\bebo\documents\documents\ingpolytech\di4\réseaux avancés et télécom\reseauxavances\tp3-4-5\git\tp3-4-5-opensm\progroute\routemetriq\routemetriq\calculation.cpp(1): error C2859: C:\Users\Bebo\Documents\Documents\INGPolytech\DI4\Réseaux avancés et Télécom\ReseauxAvances\TP3-4-5\git\TP3-4-5-OpenSM\ProgRoute\RouteMetriq\RouteMetriq\Debug\vc140.pdb ne correspond pas au fichier pdb utilisé lors de la création de cet en-tête précompilé, recréez l'en-tête précompilé.

@@ -5,6 +5,7 @@
 #include <cstring>
 #include <sstream>
 #include <cstdlib>
+#include <algorithm>
 
 #include "calculation.h"
 #include "topology.h"
@@ -33,7 +34,7 @@ Calculation::Calculation(char* topoFile, char* routeFile)
 */
 int Calculation::getHopCount(int fromId, int toId)
 {
-	int count = 0;
+	int count = 1;
 
 	struct hostNode * fromHost = topologyTable.getHostById(fromId);
 	struct hostNode * toHost = topologyTable.getHostById(toId);
@@ -51,6 +52,30 @@ int Calculation::getHopCount(int fromId, int toId)
 	//Aide : struct routeItem * item = routingTable.getTableByName(switchName); permet de charger la table de routage
 	//Retourner le nombre de sauts du noeud fromId vers le toId	
 	cout << "From " << fromNode << " to " << toNode << ": Hop Count = " << count << endl;
+
+	struct routeItem * routeItem;
+	struct switchNode * switchNode;
+	string nextName = switchName;
+	int idOut;
+
+	// permet de charger la table de routage
+	while (nextName.compare(toHost->dstName) != 0) // Tant que le nom suivant n'est pas le nom de destination
+	{
+		routeItem = routingTable.getTableByName(nextName);
+		switchNode = topologyTable.getSwitchByName(nextName);
+
+		// Récupérer dans la table de routage du routeItem le port correspondant à la destination
+		idOut = routeItem->outport.at(distance(routeItem->dstInfo.begin(), find(routeItem->dstInfo.begin(), routeItem->dstInfo.end(), toHost->name)));
+
+		cout << "\nPort de sortie : " << idOut << endl;
+
+		nextName = switchNode->dstName.at(distance(switchNode->srcPort.begin(), find(switchNode->srcPort.begin(), switchNode->srcPort.end(), idOut)));
+
+		cout << "\nProchain switch : " << nextName << endl;
+
+		count++;
+	}
+
 	return count;
 }
 
@@ -59,14 +84,31 @@ int Calculation::getHopCount(int fromId, int toId)
 */
 int Calculation::calculate()
 {
+	//TODO 
+	//Implémenter l'algo du calcul du nombre de sauts
+	//Aide : Pour recueperer le nombre de saut de source vers destination -> getHopCount(source, destination);
+	//Aide : Pour recuperer le nombre de HCA -> topologyTable.getHostCount();
+	//retourner le minimum trouver.
+
 	int minHop = 0; //Min value
+	int cpt = 0;
+	int hopCount = 0;
 
-					//TODO 
-					//Implémenter l'algo du calcul du nombre de sauts
-					//Aide : Pour recueperer le nombre de saut de source vers destination -> getHopCount(source, destination);
-					//Aide : Pour recuperer le nombre de HCA -> topologyTable.getHostCount();
-					//retourner le minimum trouver.
+	for (int i = 0; i < topologyTable.getHostCount(); i++)
+	{
+		cpt = 0;
+		minHop = 0;
+		for (int j = 0; j < topologyTable.getHostCount(); j++)
+		{
+			if (topologyTable.getHostById(i) == topologyTable.getHostById(j))
+				continue;
+			hopCount = getHopCount(topologyTable.getHostById(i)->srcPort, topologyTable.getHostById(j)->srcPort);
+			cpt = max(cpt, hopCount);
+		}
 
+		minHop = max(minHop, cpt);
+	}
+	
 	return minHop;
 }
 
