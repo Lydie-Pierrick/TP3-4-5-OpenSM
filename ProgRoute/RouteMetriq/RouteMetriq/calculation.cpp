@@ -34,7 +34,7 @@ Calculation::Calculation(char* topoFile, char* routeFile)
 */
 int Calculation::getHopCount(int fromId, int toId)
 {
-	int count = 1;
+	int count = 0;
 
 	struct hostNode * fromHost = topologyTable.getHostById(fromId);
 	struct hostNode * toHost = topologyTable.getHostById(toId);
@@ -46,20 +46,13 @@ int Calculation::getHopCount(int fromId, int toId)
 
 	string switchName = fromHost->dstName;
 
-	//TODO
-	//Parcourir la table de routage du noeud fromId vers le toId
-	//Aide : Regarder la struture routeItem et switchNode elles pourront vous aider.
-	//Aide : struct routeItem * item = routingTable.getTableByName(switchName); permet de charger la table de routage
-	//Retourner le nombre de sauts du noeud fromId vers le toId	
-	cout << "From " << fromNode << " to " << toNode << ": Hop Count = " << count << endl;
-
 	struct routeItem * routeItem;
 	struct switchNode * switchNode;
 	string nextName = switchName;
 	int idOut;
 
 	// permet de charger la table de routage
-	while (nextName.compare(toHost->dstName) != 0) // Tant que le nom suivant n'est pas le nom de destination
+	while (nextName.compare(toNode) != 0) // Tant que le nom suivant n'est pas le nom de destination
 	{
 		routeItem = routingTable.getTableByName(nextName);
 		switchNode = topologyTable.getSwitchByName(nextName);
@@ -75,6 +68,13 @@ int Calculation::getHopCount(int fromId, int toId)
 
 		count++;
 	}
+
+	//TODO
+	//Parcourir la table de routage du noeud fromId vers le toId
+	//Aide : Regarder la struture routeItem et switchNode elles pourront vous aider.
+	//Aide : struct routeItem * item = routingTable.getTableByName(switchName); permet de charger la table de routage
+	//Retourner le nombre de sauts du noeud fromId vers le toId	
+	cout << "From " << fromNode << " to " << toNode << ": Hop Count = " << count << endl;
 
 	return count;
 }
@@ -96,14 +96,19 @@ int Calculation::calculate()
 
 	for (int i = 0; i < topologyTable.getHostCount(); i++)
 	{
+		cout << "------------------------------------------" << endl;
+
 		cpt = 0;
 		minHop = 0;
+
 		for (int j = 0; j < topologyTable.getHostCount(); j++)
 		{
-			if (topologyTable.getHostById(i) == topologyTable.getHostById(j))
-				continue;
-			hopCount = getHopCount(topologyTable.getHostById(i)->srcPort, topologyTable.getHostById(j)->srcPort);
-			cpt = max(cpt, hopCount);
+			cout << "-----------------" << endl;
+			if (i != j)
+			{				
+				hopCount = getHopCount(i, j);
+				cpt = max(cpt, hopCount);
+			}
 		}
 
 		minHop = max(minHop, cpt);

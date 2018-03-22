@@ -32,8 +32,8 @@ int main(int argc, char *argv[])
 	// TO REMOVE !!!!
 	// !!!
 	argc = 2;
-	argv[1] = "Topo1.topo";
-	argv[2] = "Topo1.route";
+	argv[1] = "Topo2.topo";
+	argv[2] = "Topo2.route";
 
 	// END TO REMOVE !!!!
 
@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
 
 	cout << "Number of hops calculation" << endl;
 	//getchar();
-	cout << endl << "\tMinimum number of hops = " << routecalc.calculate() << endl;
+	cout << endl << "\tMaxmum number of hops = " << routecalc.calculate() << endl;
 
 	cout << "Route balancing " << endl;
 	//getchar();
